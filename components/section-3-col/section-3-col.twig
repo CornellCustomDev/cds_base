@@ -1,0 +1,59 @@
+{% set layout = html_cva(
+  base: 'layout',
+  variants: {
+    columns: {
+      '33-33-33': 'layout-1-1-1',
+      '50-25-25': 'layout-2-1-1',
+      '25-25-50': 'layout-1-1-2',
+      '25-50-25': 'layout-1-2-1',
+    },
+  }
+) %}
+{% set region = html_cva(
+  base: 'region',
+  variants: {
+    background_color: {
+      'navy': 'navy dark',
+      'red': 'red dark',
+      'gray': 'gray dark',
+    },
+    background_tint: {
+      true: 'tint',
+      false: '',
+    },
+    padding: {
+      'default': 'padded',
+      'small': 'padded-small',
+      'medium': 'padded-medium',
+      'large': 'padded-large',
+    },
+  }
+) %}
+{% set region_classes =
+  region.apply({
+    background_color: background_color|default(''),
+    padding: padding,
+    background_tint: background_tint,
+  })
+%}
+<div class="{{ region_classes }}">
+  <div class="container">
+    <div class="{{ layout.apply({columns: columns}) }}">
+      <div class="section">
+        {% block col_1 %}
+
+        {% endblock %}
+      </div>
+      <div class="section">
+        {% block col_2 %}
+
+        {% endblock %}
+      </div>
+      <div class="section">
+        {% block col_3 %}
+
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>

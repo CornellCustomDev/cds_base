@@ -1,0 +1,31 @@
+core_version_requirement: '>=9'
+type: theme
+base theme: false
+
+name: 'Cornell Design System: Base Theme'
+description: 'Rough Prototype Oct 2025'
+package: 'Cornell CWD'
+
+regions:
+  content: 'Content'
+  # content_header: 'Content Header'
+  # content_footer: 'Content Footer'
+  # supplementary: 'Supplementary Region 1'
+  # supplementary2: 'Supplementary Region 2'
+  # sidebar_primary: 'Primary Sidebar (Top)'
+  # sidebar_secondary: 'Secondary Sidebar (Bottom)'
+  site_branding: 'Site Branding'
+  nav_main: 'Main Navigation'
+  nav_utility: 'Utility Navigation'
+  # nav_breadcrumb: 'Breadcrumb Navigation'
+  footer: 'Footer'
+  # footer_primary: 'Primary Footer Region'
+  # footer_secondary: 'Secondary Footer Region'
+  # subfooter: 'Subfooter'
+
+libraries:
+  - 'cds_base/global-styling'
+  - 'cds_base/typekit'
+  - 'cds_base/header-scripts'
+ckeditor5-stylesheets:
+  - 'assets/css/ckeditor/ckeditor5.css'

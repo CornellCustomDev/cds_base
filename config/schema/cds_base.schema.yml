@@ -1,0 +1,5 @@
+# Schema for the configuration files of the CDS base theme.
+
+cds_base.settings:
+  type: theme_settings
+  label: 'Cornell Design System base theme settings'

@@ -1,0 +1,50 @@
+{% set slider_id = random(9999) %}
+{% set slider_ui = html_cva(
+  base: 'slider-ui',
+  variants: {
+    nav_position: {
+      'nav-right': 'nav-right',
+      'nav-center': 'nav-center',
+    },
+    captions_position: {
+      'captions-right': 'captions-right',
+      'captions-center': 'captions-center',
+    },
+  }
+) %}
+
+{% if header %}
+<div data-slider-header="true" class="{{ slider_ui.apply({nav_position: nav_position|default(''), captions_position: captions_position|default('')}) }}">
+  <div class="container">
+    <div id="slider-caption" class="slider-caption"></div>
+  </div>
+</div>
+{% else %}
+<div class="slider-container" id="slider-{{ slider_id }}">
+  <div class="{{ slider_ui.apply({nav_position: nav_position|default(''), captions_position: captions_position|default('')}) }}">
+    <div class="container">
+      <div class="slider-caption" id="slider-headline-{{ slider_id }}"></div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<script>
+  if (global_slider_count != undefined) {
+    global_slider_count++;
+  }
+  else {
+    var global_slider_count = 1;
+  }
+  window['image_array' + global_slider_count] = [];
+</script>
+
+{% block slides %}
+
+{% endblock %}
+
+{% if header %}
+<script>cwd_slider('#header','#slider-caption',8,1,{{ autoplay|default('false') }},{{ random_start|default('false') }});</script>
+{% else %}
+<script>cwd_slider('#slider-{{ slider_id }}','#slider-headline-{{ slider_id }}',8,1,{{ autoplay|default('false') }},{{ random_start|default('false') }});</script>
+{% endif %}

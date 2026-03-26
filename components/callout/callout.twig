@@ -1,0 +1,21 @@
+{%
+  set classes = [
+  'block-callout',
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {# content #}
+  <div class="callout-photo">
+  {% if image %}
+    <div class="adaptive-photo"><img src="{{ image.src }}" alt="{{ image.alt }}"></div>
+  {% else %}
+    <div class="adaptive-photo"><img src="/themes/custom/cds_base/components/callout/sample.jpg" alt="Cornell's mascot, the Big Red Bear, receives a homecoming hug from a young girl."></div>
+  {% endif %}
+  </div>
+  <div class="callout-message">
+    {% set heading_level = heading_level|default(2) %}
+    <h{{ heading_level }} class="h2">{{ heading }}</h{{ heading_level }}>
+    <p class="intro small">{{ intro }}</p>
+    <p><a class="link-button" href="{{ cta_link }}">{{ cta_label }}</a></p>
+  </div>
+</div>

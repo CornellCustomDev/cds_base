@@ -1,0 +1,14 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Text
+description: A block of content.
+status: experimental
+group: Content
+props:
+  type: object
+  properties:
+    text:
+      type: string
+      title: 'Content'
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples: ['<p>This is <strong>formatted</strong> text</p>']

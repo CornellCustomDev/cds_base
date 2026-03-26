@@ -1,0 +1,39 @@
+{% set layout_attributes = create_attribute() %}
+{% set region_attributes = create_attribute() %}
+{% set region = html_cva(
+  base: 'region',
+  variants: {
+    background_color: {
+      'navy': 'navy dark',
+      'red': 'red dark',
+      'gray': 'gray dark',
+    },
+    background_tint: {
+      true: 'tint',
+      false: '',
+    },
+    padding: {
+      'default': 'padded',
+      'small': 'padded-small',
+      'medium': 'padded-medium',
+      'large': 'padded-large',
+    },
+  }
+) %}
+{% set region_classes =
+  region.apply({
+    background_color: background_color|default(''),
+    padding: padding,
+    background_tint: background_tint,
+  })
+%}
+
+<div{{ region_attributes.addClass(region_classes, region_css_class) }}>
+  <div class="container">
+    <div{{ layout_attributes.addClass(layout_css_class) }}>
+      {% block col %}
+
+      {% endblock %}
+    </div>
+  </div>
+</div>

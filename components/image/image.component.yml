@@ -1,0 +1,22 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Image
+status: experimental
+group: Content
+props:
+  type: object
+  properties:
+    media:
+      $ref: json-schema-definitions://canvas.module/image
+      title: Image
+      type: object
+      examples:
+        - src: "assets/sample.jpg"
+          alt: "Cornell's mascot, the Big Red Bear, receives a homecoming hug from a young girl."
+          width: 360
+          height: 360
+    caption:
+      title: Caption
+      type: string
+    url:
+      type: string
+      title: Link

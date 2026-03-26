@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function cds_base_preprocess_page(&$variables) {
+  // Add variable for page that is canvas pages or if editing in canvas.
+  $variables['is_canvas_page'] = false;
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name === 'entity.canvas_page.canonical' || str_starts_with($route_name, 'canvas.api.layout')) {
+    $variables['is_canvas_page'] = true;
+  }
+}

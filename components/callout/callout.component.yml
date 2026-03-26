@@ -1,0 +1,59 @@
+name: CD Callout
+description: A photo with text and a call-to-action button.
+status: experimental
+group: Content
+props:
+  type: object
+  required:
+    # all parts are required for now
+    - image
+    - heading_level
+    - heading
+    - intro
+    - cta_label
+    - cta_link
+  properties:
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+      description: "A square image, though it may be displayed in different proportions depending on the Callout's location in the design."
+      examples:
+        - src: "sample.jpg"
+          alt: "Cornell's mascot, the Big Red Bear, receives a homecoming hug from a young girl."
+          width: 360
+          height: 360
+    heading_level:
+      type: integer
+      title: Heading Level
+      description: "The semantic heading level for this element (will have the appearance of an H2, regardless)."
+      enum: [2, 3]
+      examples:
+        - 3
+    # may move to slots
+    heading:
+      type: string
+      title: Heading Text
+      description: "A short heading is best, given its purpose of drawing attention away from surrounding content."
+      examples:
+        - 'Callout'
+    # may move to slots
+    intro:
+      type: string
+      title: Paragraph Text
+      description: "A short message presented in a slightly smaller version of the \"Intro\" text style."
+      examples:
+        - 'A short, well-written message to provide context. It may break to additional lines.'
+    # As of Dec 2025, it does not appear that there is a link schema available, so we're just using two strings for now
+    cta_label:
+      type: string
+      title: Button Label
+      description: "This will present as a button, so the text should be short and speak to an action that will be taken."
+      examples:
+        - 'Call to Action'
+    cta_link:
+      type: string
+      title: Button Link
+      description: "Enter the link URL"
+      examples:
+        - 'https://www.cornell.edu'

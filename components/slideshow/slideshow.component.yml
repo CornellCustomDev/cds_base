@@ -1,0 +1,47 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Slideshow
+description: A slideshow container.
+status: experimental
+group: Content
+props:
+  type: object
+  properties:
+    header:
+      type: boolean
+      title: 'Header slideshow'
+      description: 'Places slideshow in page header.'
+      examples: [ false ]
+    autoplay:
+      type: boolean
+      title: 'Autoplay'
+      description: 'Slideshow automatically plays.'
+      examples: [ false ]
+    random_start:
+      type: boolean
+      title: 'Random start'
+      description: 'Slideshow starts on a random slide'
+      examples: [ false ]
+    nav_position:
+      type: string
+      title: Slider nav position
+      description: "If none is selected, the slider nav will appear on the left."
+      enum:
+        - nav-right
+        - nav-center
+      meta:enum:
+        nav-right: Right
+        nav-center: Center
+    captions_position:
+      type: string
+      title: Captions position
+      description: "If none is selected, the slider captions will appear on the left."
+      enum:
+        - captions-right
+        - captions-center
+      meta:enum:
+        captions-right: Right
+        captions-center: Center
+
+slots:
+  slides:
+    title: "Slides"

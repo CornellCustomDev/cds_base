@@ -1,0 +1,14 @@
+<!--
+{{ image.src }}
+{{ title }}
+{{ caption }}
+{{ link }}
+{{ alt }}
+-->
+
+    <script>
+      var slide_array = ['{{ image.src }}', '{{ title }}', '{{ caption }}', '{{ link }}', '{{ alt }}'];
+      if (window['image_array' + global_slider_count] != undefined) {
+        window['image_array' + global_slider_count].push(slide_array);
+      }
+    </script>

@@ -1,0 +1,26 @@
+global-styling:
+  css:
+    theme:
+      assets/cds/css/base.css: {}
+      assets/cds/fonts/font-awesome.min.css: {}
+      assets/cds/fonts/material-design-iconic-font.min.css: {}
+      assets/cds/fonts/cornell-custom.css: {}
+      assets/css/drupal.css: {}
+  js:
+    assets/cds/js/cds.js: {}
+    assets/cds/js/cds_menus.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+typekit:
+  css:
+    theme:
+      https://use.typekit.net/nwp2wku.css: {}
+
+header-scripts:
+  header: true
+  js:
+    assets/cds/js/cds_slider.js: {}
+  dependencies:
+    - core/jquery

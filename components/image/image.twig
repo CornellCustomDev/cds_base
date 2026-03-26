@@ -1,0 +1,34 @@
+{% set has_url = url is not empty ? 'yes' : 'no' %}
+
+{% if caption %}
+<figure>
+{% endif %}
+    {% block media %}
+      {% if url is not empty %}
+        <a href="{{ url }}">
+          {% include 'canvas:image' ignore missing with {
+            src: media.src,
+            alt: media.alt,
+            width: media.width,
+            height: media.height,
+            loading: 'eager'
+          } only %}
+        </a>
+      {% else %}
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          width: media.width,
+          height: media.height,
+          loading: 'eager'
+        } only %}
+      {% endif %}
+    {% endblock %}
+  {% if caption %}
+    <figcaption>
+      {{ caption }}
+    </figcaption>
+  {% endif %}
+{% if caption %}
+</figure>
+{% endif %}

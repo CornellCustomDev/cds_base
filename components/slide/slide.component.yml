@@ -1,0 +1,40 @@
+name: Slide
+description: A slide for adding to a slideshow container.
+status: experimental
+group: Content
+props:
+  type: object
+  required:
+    - image
+    - title
+    - caption
+  properties:
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+      examples:
+        - src: "slide-sample.jpg"
+          alt: "A student pulls a suitcase toward their new residence hall."
+          width: 1125
+          height: 750
+    title:
+      type: string
+      title: Title
+      description: "This text is displayed on the slide as a large headline."
+      examples:
+        - 'Slide title'
+    caption:
+      type: string
+      title: Caption
+      description: "This text is displayed on the slide as a small caption."
+      examples:
+        - 'Slide caption'
+    link:
+      type: string
+      title: Link
+      description: "If filled in, the title and/or caption will be a clickable link."
+    alt:
+      type: string
+      title: Alt text
+      description: "This text will only be used if both title and caption are empty (and should be considered required in such a case). It will be accessible to screen readers and visible to all users on keyboard focus."

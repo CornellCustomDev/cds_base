@@ -1,0 +1,35 @@
+"$schema": "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Heading
+group: Content
+status: experimental
+props:
+  type: object
+  required:
+    - heading_text
+    - level
+  properties:
+    heading_text:
+      type: string
+      title: Heading
+      default: "Enter title"
+      examples:
+        - Your heading goes here
+    level:
+      type: number
+      title: Heading level
+      enum: [1, 2, 3, 4, 5, 6]
+      examples:
+        - 2
+    appearance:
+      type: string
+      title: Appearance
+      enum:
+        - h1
+        - h2
+        - h3
+        - h4
+        - h5
+        - h6
+    url:
+      type: string
+      title: Link

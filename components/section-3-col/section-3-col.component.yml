@@ -1,0 +1,64 @@
+'$schema': 'https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json'
+name: Section - Three Column
+description: A three column section.
+status: experimental
+group: Layout
+props:
+  type: object
+  required:
+    - columns
+  properties:
+    columns:
+      type: string
+      title: Grid layout
+      description: Layout selected applies on desktop and tablet.
+      enum:
+        - "33-33-33"
+        - "50-25-25"
+        - "25-25-50"
+        - "25-50-25"
+      examples:
+        - "33-33-33"
+      default:
+        - "33-33-33"
+    background_color:
+      type: string
+      title: Background color
+      enum:
+        - navy
+        - red
+        - gray
+      meta:enum:
+        navy: Navy
+        red: Red
+        gray: Gray
+    background_tint:
+      type: boolean
+      title: 'Background tint'
+      description: 'Slightly darkens the background color'
+      examples: [ false ]
+    padding:
+      type: string
+      title: Padding
+      enum:
+        - default
+        - small
+        - medium
+        - large
+      meta:enum:
+        default: Default
+        small: Small
+        medium: Medium
+        large: Large
+      examples:
+        - default
+      default:
+        - default
+
+slots:
+  col_1:
+    title: "Column One"
+  col_2:
+    title: "Column Two"
+  col_3:
+    title: "Column Three"
