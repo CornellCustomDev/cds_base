@@ -1,0 +1,40 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Card Container
+status: experimental
+group: Layout
+slots:
+  cards:
+    title: Cards
+    expected:
+      - cds_base:card
+props:
+  type: object
+  properties:
+    use_tiles:
+      title: Use Tiled Layout
+      type: boolean
+    overlay:
+      title: Use Overlay
+      type: boolean
+    collapse:
+      title: Collapse Cards
+      type: boolean
+    responsive:
+      title: Responsive Behavior
+      type: string
+      enum:
+        - max-1
+        - max-2
+        - max-3
+        - max-4
+        - max-4-2
+        - max-3-1
+        - one-plus-max-3
+      meta:enum:
+        max-1: "1 column"
+        max-2: "2 columns"
+        max-3: "3 columns"
+        max-4: "4 columns"
+        max-4-2: "4 columns, then 2 columns"
+        max-3-1: "3 columns, then 1 column"
+        one-plus-max-3: "Highlight card, followed by 3 columns"

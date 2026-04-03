@@ -1,0 +1,50 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Card
+status: experimental
+group: Block
+props:
+  type: object
+  properties:
+    image_source:
+      title: Image Source
+      type: string
+      enum:
+        - Media Library
+        - External URL
+        - None
+    card_image:
+      $ref: json-schema-definitions://canvas.module/image
+      title: Image
+      type: object
+      examples:
+        - src: "assets/sample.jpg"
+          alt: "Cornell's mascot, the Big Red Bear, receives a homecoming hug from a young girl."
+          width: 360
+          height: 360
+    card_title:
+      title: Title
+      type: string
+    card_title_h_level:
+      title: Title Heading Level
+      type: string
+      enum:
+        - h2
+        - h3
+      default: h3
+    card_subheading:
+      title: Subheading
+      type: string
+    card_url:
+      type: string
+      title: Link
+    card_text:
+      title: Description
+      type: string
+    card_badge:
+      title: Badge
+      type: string
+    card_tags:
+      title: Tags
+      type: array
+      items:
+        type: string

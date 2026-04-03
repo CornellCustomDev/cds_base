@@ -1,0 +1,17 @@
+{# Dependency: twig_tweak #}
+
+{% set card_image =
+  {
+    src: node.field_event_media|file_url,
+    alt: node.field_event_media.entity.field_media_image.alt,
+  }
+%}
+
+{{ include('cds_base:card', {
+  card_title: node.title.value,
+  card_title_h_level: 'h3',
+  card_subheading: content.field_event_date_start,
+  card_text: content.field_event_description,
+  card_url: node.field_event_url.uri ?: url,
+  card_image: card_image,
+}, with_context = false ) }}
