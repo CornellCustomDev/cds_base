@@ -1,0 +1,67 @@
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    'padded',
+    'region',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  <h1{{ title_attributes }}>
+    {{ label }}
+  </h1>
+  {{ title_suffix }}
+
+    <div{{ content_attributes.addClass('event') }}>
+      <figure>
+        <img class="align-right" src="{{ node.field_event_media|file_url }}" alt="{{ node.field_event_media.entity.field_media_image.alt }}" />
+      </figure>
+      <div>
+        <ul class="custom no-bullet">
+
+          {% if content.field_event_date_start %}
+            <li>
+
+              <i aria-hidden="true" class="fa fa-calendar-o"></i>
+              <strong>
+              {{ content.field_event_date_start.0 }}
+              {% if content.field_event_date_end|render %}
+                &thinsp;&mdash;&thinsp;
+                {{ content.field_event_date_end.0 }}
+              {% endif %}
+              </strong>
+            </li>
+          {% endif %}
+
+
+
+
+          {% if node.field_event_location.value %}
+            <li>
+              <strong>
+              <i aria-hidden="true" class="fa fa-building"></i>
+              {{ node.field_event_location.value }}
+              </strong>
+            </li>
+          {% endif %}
+
+
+        </ul>
+
+        {% if content.field_event_description %}
+          {{ content.field_event_description.0 }}
+        {% endif %}
+
+        {% if content.field_event_url %}
+          <p class="localist-link">
+            <a class="link-button" href="{{ content.field_event_url.url }}">{{label}} on Cornell Events</a>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+</article>
