@@ -1,11 +1,32 @@
+{#
+  Card SDC.
+
+  This is the core scaffolding for a card. You should output this within the slot of a card container.
+
+  Example usage below.  You may omit any of these you don't want.
+  {% set card_props = {
+    card_image: {
+      src: [string, required],
+      alt: [string],
+    },
+    card_title: [string],
+    card_title_h_level: [string: 'h2' | 'h3' (default: 'h3')],
+    card_subheading: [string],
+    card_text: [string],
+    card_url: [string],
+    card_badge: [string],
+  } %}
+  {{ include('cds_base:card', card_props, with_context = false ) }}
+#}
+
 <div class="card">
   <div class="{{ card_image ? 'group-image' : 'group-noimage' }}">
     {% if card_url %}
       <a href="{{ card_url }}">
     {% endif %}
       {% if card_image is defined and card_image is not empty %}
-        {# Images from the media library.  We suppress alt since the adjacent link text has precedence #}
-        <img src="{{ card_image.src }}" alt="" />
+        {# Images from the media library.  Alt is suppressed if the card is linked. #}
+        <img src="{{ card_image.src }}" alt="{{ card_url|default('') ? '' : (card_image.alt|default('')) }}" />
       {% endif %}
       {% if card_badge and card_image %}
         <div class="badge">

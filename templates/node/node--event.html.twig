@@ -4,8 +4,8 @@
   card_title: label,
   card_title_h_level: 'h3',
   card_subheading: content.field_event_date_start,
-  card_text: content.field_event_description,
-  card_url: node.field_event_url.uri ?: url,
+  card_text: content.field_event_description|render|striptags|truncate(150, true, true),
+  card_url: content.field_event_url[0]['#url'].toString() ?: url,
 } %}
 
 {# If we have an image, use it and add it to the props, otherwise, use a default.  Applicable
