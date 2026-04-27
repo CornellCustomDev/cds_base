@@ -1,23 +1,26 @@
 <div class="region padded">
-  <h1>{{ view.getTitle() }}</h1>
+  <div class="container">
+    <h1>{{ view.getTitle() }}</h1>
 
-  {% set events %}
-    {% for row in rows %}
-      {#
-        With the events config (outputting events as rendered entities), this takes the
-        content from a node template (node--event.html.twig) and outputs it in the view.
-      #}
-      {{- row.content -}}
-    {% endfor %}
-  {% endset %}
+    {% set events %}
+      {% for row in rows %}
+        {#
+          With the events config (outputting events as rendered entities), this takes the
+          content from a node template (node--event.html.twig) and outputs it in the view.
+          In this case, node--event.html.twig puts each event in a card SDC.
+        #}
+        {{- row.content -}}
+      {% endfor %}
+    {% endset %}
 
-  {#
-    use_tiles - a prop of card-container we are setting
-    cards - a slot of card-container that we are populating with cards.  Slots don't have formatting
-            defined, but the card blocks do.
-  #}
-  {{ include('cds_base:card-container', {
-    use_tiles: false,
-    cards: events
-  }, with_context = false )}}
+    {#
+      use_tiles - a prop of card-container we are setting
+      cards - a slot of card-container that we are populating with cards.  Slots don't have formatting
+              defined, but the card blocks do.
+    #}
+    {{ include('cds_base:card-container', {
+      use_tiles: false,
+      cards: events
+    }, with_context = false )}}
+  </div>
 </div>

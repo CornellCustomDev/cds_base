@@ -1,17 +1,38 @@
 {# Dependency: twig_tweak #}
 
-{% set card_image =
-  {
-    src: node.field_event_media|file_url,
-    alt: node.field_event_media.entity.field_media_image.alt,
-  }
-%}
-
-{{ include('cds_base:card', {
-  card_title: node.title.value,
+{% set card_props = {
+  card_title: label,
   card_title_h_level: 'h3',
   card_subheading: content.field_event_date_start,
   card_text: content.field_event_description,
   card_url: node.field_event_url.uri ?: url,
-  card_image: card_image,
-}, with_context = false ) }}
+} %}
+
+{# If we have an image, use it and add it to the props, otherwise, use a default.  Applicable
+  to events since we will use a uniform design.  If you use this on other content types, you may want
+  to consider not sending a card_image prop at all if you want to support no image cards. #}
+{% if node.field_event_media is defined and node.field_event_media|file_url is not null %}
+  {% set card_props = card_props|merge({
+    card_image: {
+      src: node.field_event_media|file_url,
+      alt: node.field_event_media.entity.field_media_image.alt,
+    }
+  }) %}
+{% else %}
+  {# Default backup image.  src is hard-coded to ensure that it works even when a child theme is used.
+    Alt is provided just in case, but will eventually be stripped as null #}
+  {% set card_props = card_props|merge({
+    card_image: {
+      src: '/themes/custom/cds_base/assets/cds/images/photos/campus.jpg',
+      alt: 'Photo of Cornell campus',
+    }
+  }) %}
+{% endif %}
+
+{#
+  Each singular event is sent back to the view as a card, which in our case
+  is already within a card-container.
+
+  View: views-view-unformatted--events.html.twig
+  #}
+{{ include('cds_base:card', card_props, with_context = false ) }}

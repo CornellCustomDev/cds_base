@@ -1,16 +1,13 @@
 <div class="card">
-  {% if card_image %}
-    <div class="group-image">
-  {% else %}
-    {# If no image is provided, we'll use the no-image style #}
-    <div class="group-noimage">
-  {% endif %}
-    <a href="{{ card_url }}">
-      {% if card_image %}
+  <div class="{{ card_image ? 'group-image' : 'group-noimage' }}">
+    {% if card_url %}
+      <a href="{{ card_url }}">
+    {% endif %}
+      {% if card_image is defined and card_image is not empty %}
         {# Images from the media library.  We suppress alt since the adjacent link text has precedence #}
         <img src="{{ card_image.src }}" alt="" />
       {% endif %}
-      {% if card_badge %}
+      {% if card_badge and card_image %}
         <div class="badge">
           {{ card_badge }}
         </div>
@@ -18,14 +15,16 @@
       {% if card_title %}
         {# Card title. Heading level defined in the component. #}
         <div class="overlay">
-          <{{ card_title_h_level }}>
+          <{{ card_title_h_level|default('h3') }}>
             <span class="deco">
               {{ card_title }}
             </span>
-          </{{ card_title_h_level }}>
+          </{{ card_title_h_level|default('h3') }}>
         </div>
       {% endif %}
-    </a>
+    {% if card_url %}
+      </a>
+    {% endif %}
   </div>
   <div class="group-fields">
     {% if card_subheading %}
@@ -36,18 +35,6 @@
         {{ card_text }}
       </div>
     {% endif %}
-    {% if card_taxonomies %}
-      <div class="metadata-set">
-        {% for taxonomy in card_taxonomies %}
-          <div class="field">
-            <a href="{{ taxonomy.url }}">
-              <span class="deco">
-                {{ taxonomy.name }}
-              </span>
-            </a>
-          </div>
-        {% endfor %}
-      </div>
-    {% endif %}
+    {# Note: In the future, taxonomies/tags for a card should be added here. #}
   </div>
 </div>
