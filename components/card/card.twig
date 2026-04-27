@@ -23,6 +23,8 @@
   <div class="{{ card_image ? 'group-image' : 'group-noimage' }}">
     {% if card_url %}
       <a href="{{ card_url }}">
+    {% else %}
+      <div class="no-link">
     {% endif %}
       {% if card_image is defined and card_image is not empty %}
         {# Images from the media library.  Alt is suppressed if the card is linked. #}
@@ -45,6 +47,8 @@
       {% endif %}
     {% if card_url %}
       </a>
+    {% else %}
+      </div>
     {% endif %}
   </div>
   <div class="group-fields">
