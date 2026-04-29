@@ -1,0 +1,18 @@
+{% set card_container_attributes = create_attribute() %}
+{% set card_container_classes = [
+  'layout-cards',
+  'cwd-basic',
+  use_tiles ? 'tiles' : '',
+  overlay ? '' : 'no-overlay',
+  collapse ? 'collapse' : '',
+  responsive,
+  ]
+%}
+
+<div {{ card_container_attributes.addClass(card_container_classes) }}>
+  <div class="cards">
+    {% block cards %}
+      {{ cards }}
+    {% endblock %}
+  </div>
+</div>
